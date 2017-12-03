@@ -1,0 +1,32 @@
+from Crypto.Cipher import AES
+import base64
+obj = AES.new('1234567890123456', AES.MODE_ECB)
+secret = "Um9sbGluJyBpbiBteSA1LjAKV2l0aCBteSByYWctdG9wIGRvd24gc28gbXkgaGFpciBjYW4gYmxvdwpUaGUgZ2lybGllcyBvbiBzdGFuZGJ5IHdhdmluZyBqdXN0IHRvIHNheSBoaQpEaWQgeW91IHN0b3A/IE5vLCBJIGp1c3QgZHJvdmUgYnkK"
+secret = secret.decode('base64')
+
+flag = ''
+for i in range(15, 0, -1):
+	message = 'a'*i
+	plaintext = message + secret
+	plaintext = plaintext + (16-len(plaintext)%16)*str(chr(16-len(plaintext)%16))
+	ciphertext = obj.encrypt(plaintext)
+	for j in range(0,256):
+		test = 'a'*i + flag + chr(j)
+		if (ciphertext[:32] == obj.encrypt(test):
+			flag+ = chr(j)
+	print flag
+#for i in range (2, (len(plaintext)/16)):
+	for j in range (15, 0, -1):
+		message = 'a'*j
+        	plaintext = message + secret		
+		plaintext = plaintext + (16-len(plaintext)%16)*str(chr(16-len(plaintext)%16))
+        	ciphertext = obj.encrypt(plaintext)
+		for k in range (0,256):
+			test = 'a'*j + flag + chr(k)
+			if (ciphertext[] = obj.encrypt(test):
+				flag+ = chr(k)
+		print flagplaintext = plaintext + (16-len(plaintext)%16)*str(chr(16-len(plaintext)%16))
+        ciphertext = obj.encrypt(plaintext)
+
+
+
